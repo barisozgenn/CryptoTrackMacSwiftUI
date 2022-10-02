@@ -9,18 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
 
+    @EnvironmentObject var marketVideModel : MarketViewModel
+    
     var body: some View {
   
 
         NavigationView {
           SideMenuBarView()
+                .frame(idealWidth: 120)
             
-            Text("Detail")
+            
+           PortfolioView()
         }
         .navigationTitle(
             Text("Crypto Track MacOS")
         )
-        .navigationViewStyle(.columns)
         .background(Color.theme.appBackgroundColor.preferredColorScheme(.dark))
     }
 }

@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct CryptoTrackMacSwiftUIApp: App {
+    
+    @StateObject private var marketViewModel = MarketViewModel()
+    
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(marketViewModel)
                 
         }
     }
