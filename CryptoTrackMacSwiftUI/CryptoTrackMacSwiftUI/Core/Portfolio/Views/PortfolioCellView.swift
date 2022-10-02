@@ -88,8 +88,9 @@ struct PortfolioCellView: View {
                 
                 
             }
-            .background(Color.theme.itemBackgroundColor)
-            .padding(.horizontal,4)
+            .padding(.horizontal,8)
+            .frame(height: 70)
+            .cornerRadius(14)
         }
     
     

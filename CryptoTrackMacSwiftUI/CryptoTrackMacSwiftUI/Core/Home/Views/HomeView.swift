@@ -19,7 +19,7 @@ struct HomeView: View {
                 .frame(idealWidth: 120)
             
             
-           PortfolioView()
+           MarketView()
         }
         .navigationTitle(
             Text("Crypto Track MacOS")

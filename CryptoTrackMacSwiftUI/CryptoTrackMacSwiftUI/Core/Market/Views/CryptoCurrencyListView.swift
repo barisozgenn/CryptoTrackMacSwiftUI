@@ -20,8 +20,8 @@ struct CryptoCurrencyListView: View {
             CurrenciesTableTitleView(viewModel: viewModel)
            
             // table list
-            ScrollView(showsIndicators: false){
-                LazyVStack(spacing: 14){
+            List{
+                LazyVStack{
                     
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                         
@@ -32,14 +32,17 @@ struct CryptoCurrencyListView: View {
                     label:{
                         
                         CryptoCurrencyCellView(cryptoCurrency: cryptoCurrency)
-                            .frame(height: 200)
+                            .frame(height: 80)
                         
                       
                     }
+                   
                         
                     }
                 }
+                
             }
+            .environment(\.defaultMinListRowHeight, 80)
             .refreshable {
                 viewModel.refreshData()
             }

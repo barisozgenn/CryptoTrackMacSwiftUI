@@ -20,7 +20,11 @@ struct SearchBarView: View {
             
             TextField("Search...", text: $searchText)
                 .disableAutocorrection(true)
+                .textFieldStyle(.plain)
+
                 .foregroundColor(Color.theme.primaryTextColor)
+                
+                .border(.clear)
                 .overlay(
                     Image(systemName: "xmark.circle.fill")
                         .padding()

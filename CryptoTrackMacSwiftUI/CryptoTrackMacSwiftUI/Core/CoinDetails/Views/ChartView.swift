@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
-//import Charts
+import Charts
 
 struct ChartView: View {
     let viewModel : CoinDetailViewModel
     
     var body: some View {
         VStack{
-            /*
+            
             if #available(macOS 13.0, *){
                 Chart{
                     ForEach(viewModel.chartData){ item in
@@ -60,15 +60,15 @@ struct ChartView: View {
                     }
                 }
             }
-            */
+            
         }
        
     }
 }
 
-/*struct ChartView_Previews: PreviewProvider {
+struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
         ChartView(viewModel: CoinDetailViewModel(cryptoCurrency: dev.cryptoCurrency))
     }
 }
-*/
+

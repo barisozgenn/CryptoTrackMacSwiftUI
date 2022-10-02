@@ -52,8 +52,8 @@ struct CryptoCurrencyCellView:View {
                 .frame(
                     minWidth: 0,
                     maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: 50)
+                    minHeight: 50,
+                    maxHeight: .infinity)
             
             // last price
             VStack(alignment: .trailing, spacing: 1){
@@ -80,13 +80,15 @@ struct CryptoCurrencyCellView:View {
             }
             .frame(width: 55)
             .padding(.vertical, 11)
-            .padding(.horizontal,3)
+            .padding(.horizontal,7)
             .background(cryptoCurrency.priceChangePercentage24H.toPercentColor())
             .cornerRadius(4)
             
         }
+        .padding(.horizontal,8)
+        .frame(height: .infinity)
         .background(Color.theme.itemBackgroundColor)
-        .padding(.horizontal,4)
+        .cornerRadius(14)
     }
 }
 

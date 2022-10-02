@@ -43,9 +43,9 @@ struct CryptoCurrencyHorizontalCellView: View {
         .background(Color.theme.itemBackgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius:14)
-                .stroke(Color(.lightGray), lineWidth: 2)
+                .stroke(Color(.black), lineWidth: 2)
         )
-        
+        .padding(.horizontal,8)
     }
 }
 struct CryptoCurrencyHorizontalCellView_Previews: PreviewProvider {

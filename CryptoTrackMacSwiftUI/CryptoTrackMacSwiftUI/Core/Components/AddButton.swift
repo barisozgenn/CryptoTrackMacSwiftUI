@@ -21,13 +21,14 @@ struct AddButton: View {
                 Image(systemName: "plus")
                     .font(.headline)
                     .foregroundColor(.white)
-                    .padding(14)
-                    .background(.blue)
-                    .cornerRadius(.infinity)
+                   
             }
-            .withPositiveButtonStyle()
             
-        }
+
+        }.frame(width: 40, height: 40)
+            .background(.blue)
+            .cornerRadius(.infinity)
+            .withPositiveButtonStyle()
             
         
     }
