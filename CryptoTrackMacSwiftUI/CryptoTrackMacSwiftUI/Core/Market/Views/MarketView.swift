@@ -9,38 +9,42 @@ import SwiftUI
 
 struct MarketView: View {
         
-    @StateObject private var viewModel = MarketViewModel()
+    @EnvironmentObject private var viewModel : MarketViewModel
 
     var body: some View {
-        ZStack{
-                VStack{
-
+            NavigationStack{
+                ZStack{
                     VStack{
-                        // arrow and indicator
-                        Image(systemName: "arrow.down")
-                            .font(.headline)
-                            .foregroundColor(.orange)
-                            .offset(y: -170)
                         
-                        // top movers view
-                        CryptoCurrencyHorizontalListView(viewModel: viewModel)
+                        VStack{
+                            // arrow and indicator
+                            Image(systemName: "arrow.down")
+                                .font(.headline)
+                                .foregroundColor(.orange)
+                                .offset(y: -170)
+                            
+                            // top movers view
+                            CryptoCurrencyHorizontalListView(viewModel: viewModel)
+                                .frame(height: 90)
+                                .background(.clear)
+                            Divider()
+                            
+                            // all coins view
+                            CryptoCurrencyListView(viewModel: viewModel)
+                                .frame(minHeight: 400)
+                        }
                         
-                        Divider()
                         
-                        // all coins view
-                        CryptoCurrencyListView(viewModel: viewModel)
-                            .frame(minHeight: 400)
                     }
                     
-                    
+                    if viewModel.isLoading {
+                        CustomLoadingIndicator()
+                    }
                 }
-            
-              if viewModel.isLoading {
-                  CustomLoadingIndicator()
-              }
+                .background(Color.theme.appBackgroundColor)
+              
             }
-            .background(Color.theme.appBackgroundColor)
-            .navigationTitle("Live Datas")
+     
         
     }
 }

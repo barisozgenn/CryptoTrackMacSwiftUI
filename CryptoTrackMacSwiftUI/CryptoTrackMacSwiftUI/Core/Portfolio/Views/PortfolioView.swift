@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PortfolioView: View {
-    @StateObject var viewModel = PortfolioViewModel()
+    @EnvironmentObject var viewModel: PortfolioViewModel
 
     var body: some View {
         VStack{

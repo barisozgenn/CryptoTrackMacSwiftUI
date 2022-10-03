@@ -10,7 +10,8 @@ import AppKit
 
 
 struct SideMenuBarView: View {
-    
+    @EnvironmentObject var homeViewModel : HomeViewModel
+
     var body: some View {
         ZStack{
             backgroundGradient
@@ -48,7 +49,12 @@ extension SideMenuBarView {
                 VStack(alignment: .leading){
                     ForEach(SideMenuBar.allCases, id: \.self){menu in
                        
-                        SideMenuBarCellView(menu: menu)
+                        SideMenuBarCellView(selectedMenuItem: $homeViewModel.selectedMenuItem, menu: menu)
+                        .onTapGesture {
+                            withAnimation(.spring()){
+                                homeViewModel.selectedMenuItem = menu
+                            }
+                        }
                         
                         Divider()
                             .background(.white.opacity(0.07))

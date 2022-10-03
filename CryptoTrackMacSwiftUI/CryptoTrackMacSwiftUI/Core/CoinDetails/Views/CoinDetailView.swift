@@ -10,7 +10,7 @@ import SwiftUI
 struct CoinDetailView: View {
     let viewModel : CoinDetailViewModel
     let cryptoCurrency : CryptoCurrency
-    
+    @State private var opacity = 0.0
     init(cryptoCurrency: CryptoCurrency){
         self.cryptoCurrency = cryptoCurrency
         
@@ -34,17 +34,26 @@ struct CoinDetailView: View {
             CoinDetailSection(model: viewModel.additionalDetailSectionModel)
                 .padding(.vertical)
         }
+        .opacity(opacity)
+        .onAppear{
+            withAnimation(.spring()){
+                opacity = 1
+            }
+        }
         .padding()
         .toolbar {
-            ToolbarItem(placement: .navigation) {
+            
+            
+            ToolbarItem(placement: .secondaryAction) {
+            
                 HStack {
                     CurrencyImageView(cryptoCurrency: cryptoCurrency)
                         .frame(width: 32, height: 32)
                         .foregroundColor(.orange)
-                        .padding(.bottom,6)
                     Text(viewModel.currencyName).font(.headline)
                 }
             }
+            
         }
     }
 }

@@ -9,14 +9,16 @@ import SwiftUI
 
 @main
 struct CryptoTrackMacSwiftUIApp: App {
-    
-    @StateObject private var marketViewModel = MarketViewModel()
+    @StateObject var marketViewModel = MarketViewModel()
+    @StateObject var portfolioViewModel = PortfolioViewModel()
     
     var body: some Scene {
         WindowGroup {
             HomeView()
                 .environmentObject(marketViewModel)
+                .environmentObject(portfolioViewModel)
                 
         }
+       .windowStyle(.hiddenTitleBar)
     }
 }

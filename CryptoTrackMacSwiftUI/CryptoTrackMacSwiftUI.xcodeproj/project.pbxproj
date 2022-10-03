@@ -61,6 +61,7 @@
 		AF89999B28E9D62300FE3795 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89999728E9D62300FE3795 /* PreviewProvider.swift */; };
 		AF89999C28E9D62300FE3795 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89999828E9D62300FE3795 /* Double.swift */; };
 		AF89999D28E9D62300FE3795 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF89999928E9D62300FE3795 /* View.swift */; };
+		AFC622E328EAE95000EEBD12 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC622E228EAE95000EEBD12 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		AF89999728E9D62300FE3795 /* PreviewProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		AF89999828E9D62300FE3795 /* Double.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		AF89999928E9D62300FE3795 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		AFC622E228EAE95000EEBD12 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,10 +154,10 @@
 		AF89990D28E9A07F00FE3795 /* CryptoTrackMacSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				AF89992828E9A21500FE3795 /* App */,
 				AF89993528E9CABF00FE3795 /* Services */,
 				AF89993428E9CAB900FE3795 /* Utils */,
 				AF89992928E9A7A900FE3795 /* Extensions */,
-				AF89992828E9A21500FE3795 /* App */,
 				AF89992528E9A14100FE3795 /* Models */,
 				AF89991D28E9A09300FE3795 /* Core */,
 				AF89991228E9A08000FE3795 /* Assets.xcassets */,
@@ -207,6 +209,7 @@
 		AF89992028E9A0A200FE3795 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AFC622E228EAE95000EEBD12 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -322,9 +325,9 @@
 			isa = PBXGroup;
 			children = (
 				AF89997828E9D4EA00FE3795 /* CryptoCurrencyCellView.swift */,
+				AF89997928E9D4EA00FE3795 /* CryptoCurrencyListView.swift */,
 				AF89997628E9D4EA00FE3795 /* CryptoCurrencyHorizontalCellView.swift */,
 				AF89997528E9D4EA00FE3795 /* CryptoCurrencyHorizontalListView.swift */,
-				AF89997928E9D4EA00FE3795 /* CryptoCurrencyListView.swift */,
 				AF89997428E9D4EA00FE3795 /* CurrenciesTableTitleView.swift */,
 				AF89997728E9D4EA00FE3795 /* MarketView.swift */,
 			);
@@ -457,6 +460,7 @@
 				AF89996C28E9CF3A00FE3795 /* ChartView.swift in Sources */,
 				AF89994828E9CC6E00FE3795 /* CryptoCurrency.swift in Sources */,
 				AF89998C28E9D56700FE3795 /* PortfolioSelectGridView.swift in Sources */,
+				AFC622E328EAE95000EEBD12 /* HomeViewModel.swift in Sources */,
 				AF89995F28E9CEAB00FE3795 /* PositiveButtonStyle.swift in Sources */,
 				AF89992728E9A15300FE3795 /* SideMenuBar.swift in Sources */,
 				AF89995A28E9CE9F00FE3795 /* CurrencyImageView.swift in Sources */,
@@ -635,7 +639,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = barisozgen.CryptoTrackMacSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -665,7 +669,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = barisozgen.CryptoTrackMacSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";

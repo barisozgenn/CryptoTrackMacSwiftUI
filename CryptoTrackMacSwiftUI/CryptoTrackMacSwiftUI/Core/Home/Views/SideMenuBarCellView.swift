@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SideMenuBarCellView: View {
     
+    @Binding var selectedMenuItem: SideMenuBar
+
     @State private var hoverMenuItem = false
     let menu : SideMenuBar
     
@@ -47,14 +49,14 @@ struct SideMenuBarCellView: View {
                     color: .black.opacity(0.14),
                     radius: 1,x: 0, y: 1
                 )
-                .opacity(hoverMenuItem ? 1 : 0)
+                .opacity((hoverMenuItem || selectedMenuItem == menu) ? 1 : 0 )
                 .padding(.horizontal, 14)
             
 
         }
         .padding(.leading, 14)
         .frame(minWidth: 77, minHeight: 45)
-        .foregroundColor(hoverMenuItem ? .orange : .white)
+        .foregroundColor((hoverMenuItem || selectedMenuItem == menu) ? .orange : .white)
         .onHover { hover in
             withAnimation(.spring()){
                 hoverMenuItem = hover
@@ -65,7 +67,7 @@ struct SideMenuBarCellView: View {
 
 struct SideMenuBarCellView_Previews: PreviewProvider {
     static var previews: some View {
-       SideMenuBarCellView(menu: .portfolio)
+       SideMenuBarCellView(selectedMenuItem: .constant(.market), menu: .portfolio)
             .preferredColorScheme(.dark)
     }
 }

@@ -40,10 +40,10 @@ struct SearchBarView: View {
                 )
         }
         .font(.headline)
-        .padding()
+        .padding(.all, 14)
         .background(
-            RoundedRectangle(cornerRadius: 29)
-                .fill(Color.theme.appBackgroundColor)
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.theme.itemBackgroundColor)
                 .shadow(
                     color: .black.opacity(0.29),
                     radius: 14,x: 0, y: 0

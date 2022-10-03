@@ -12,37 +12,25 @@ struct CryptoCurrencyListView: View {
     
     var body: some View {
         VStack(){
-    
+            
             // search bar
             SearchBarView(searchText: $viewModel.searchText)
             
             // table titles
             CurrenciesTableTitleView(viewModel: viewModel)
-           
+            
             // table list
-            List{
-                LazyVStack{
+            ScrollView{
+                LazyVStack(spacing: 2){
                     
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
-                        
-                        NavigationLink{
-                            LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
-                            
-                        }
-                    label:{
-                        
                         CryptoCurrencyCellView(cryptoCurrency: cryptoCurrency)
-                            .frame(height: 80)
-                        
-                      
-                    }
-                   
-                        
+                            .frame(height: 50)
                     }
                 }
                 
             }
-            .environment(\.defaultMinListRowHeight, 80)
+            .frame(height: 329)
             .refreshable {
                 viewModel.refreshData()
             }

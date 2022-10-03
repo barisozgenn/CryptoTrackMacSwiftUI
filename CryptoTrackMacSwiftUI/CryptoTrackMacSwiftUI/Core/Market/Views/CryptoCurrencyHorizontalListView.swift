@@ -13,7 +13,7 @@ struct CryptoCurrencyHorizontalListView:  View {
     var body: some View {
         VStack(alignment: .leading){
             
-            ScrollView(.horizontal, showsIndicators: false){
+            ScrollView(.horizontal){
                 HStack(spacing:8){
                     HStack(spacing: 0){
                         Text("TOP")
@@ -28,24 +28,22 @@ struct CryptoCurrencyHorizontalListView:  View {
                             .padding(.leading,-5)
                     }
                     .frame(height: 75)
-                        .background(Color.theme.itemBackgroundColor)
-                        .overlay(
-                            RoundedRectangle(cornerRadius:14)
-                                .stroke(Color(.lightGray), lineWidth: 2)
-                        )
+                    .background(Color.theme.itemBackgroundColor)
+                    .overlay(
+                        RoundedRectangle(cornerRadius:14)
+                            .stroke(Color(.lightGray), lineWidth: 2)
+                    )
                     ForEach(viewModel.topCryptoCurrencies){cryptoCurrency in
-                        NavigationLink{
-                            LayzNavigationView(build: CoinDetailView(cryptoCurrency: cryptoCurrency))
-                            
-                        }
-                    label:{
+                        
                         CryptoCurrencyHorizontalCellView(cryptoCurrency: cryptoCurrency)
-                    }
                         
                     }
+                    
                 }
+                .cornerRadius(14)
             }
-        }.padding()
+            .frame(height: 80)
+        }
     }
 }
 

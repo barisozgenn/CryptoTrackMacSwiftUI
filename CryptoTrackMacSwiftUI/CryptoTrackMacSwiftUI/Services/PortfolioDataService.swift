@@ -62,7 +62,7 @@ class PortfolioDataService {
         
         do {
             entities = try container.viewContext.fetch(request)
-            print("DEBUG: ⚠️ entity items: \(entities.count)")
+//           print("DEBUG: ⚠️ entity items: \(entities.count)")
         } catch let error {
             print("DEBUG: ⚠️ Error fetching portfolio entity : \(error)")
         }

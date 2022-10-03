@@ -29,10 +29,10 @@ class ImageDownloadService {
     private func  getImageFromURL(){
         if let localSavedImage = fileManager.getImage(imageName: imageName, folderName: imageCategory.rawValue){
             image = localSavedImage
-            print("DEBUG: Image From FileManager -> \(imageName)")
+//            print("DEBUG: Image From FileManager -> \(imageName)")
         }else {
             downloadImageFromURL()
-            print("DEBUG: Image From URL -> \(imageName)")
+//            print("DEBUG: Image From URL -> \(imageName)")
         }
     }
     
