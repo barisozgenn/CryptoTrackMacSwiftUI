@@ -40,11 +40,18 @@ struct PortfolioEditView: View {
                 
                 
                 portfolioResultSection
+                
+                
             }
-            .navigationTitle("Edit Portfolio")
             .toolbar(content: {
-                ToolbarItem{
-                    portfolioSaveButton
+                ToolbarItem(placement: .secondaryAction) {
+                
+                    HStack {
+                        CurrencyImageView(cryptoCurrency: cryptoCurrency)
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.orange)
+                        Text(cryptoCurrency.name).font(.headline)
+                    }
                 }
             })
            
@@ -140,6 +147,7 @@ extension PortfolioEditView {
                     
                     TextField(String(format: "%.2f", cryptoCurrency.currentPrice),
                               text: $currencyPriceText)
+                    .textFieldStyle(.plain)
                     .multilineTextAlignment(.trailing)
                 }
                 
@@ -153,6 +161,8 @@ extension PortfolioEditView {
                     
                     TextField("Ex: 1.29",
                               text: $currencyAmountText)
+                    .textFieldStyle(.plain)
+
                     .multilineTextAlignment(.trailing)
                 }
                 
@@ -201,6 +211,20 @@ extension PortfolioEditView {
                         .frame(alignment: .trailing)
                 }
                 
+                Divider()
+                
+                HStack{
+                    Spacer()
+                        .frame(
+                            minWidth: 0,
+                            maxWidth: .infinity,
+                            minHeight: 40,
+                            maxHeight: .infinity)
+                    
+                    portfolioSaveButton
+                }
+               
+                
             }.padding()
             
             
@@ -210,6 +234,9 @@ extension PortfolioEditView {
     }
     
     private var portfolioSaveButton: some View {
+        
+        
+        
         Button(action: {
             if canBeSaved() {
                 
@@ -224,12 +251,22 @@ extension PortfolioEditView {
             }
         },
                label: {
-            Image(systemName: "checkmark")
-                .opacity(canBeSaved() ? 1 : 0)
-            Text("Save".uppercased())
-                .fontWeight(.bold)
-                .opacity(canBeSaved() ? 1 : 0.3)
-        })
+           
+            HStack{
+                if canBeSaved() {
+                    Image(systemName: "checkmark")
+                }
+                Text("Save".uppercased())
+                    .fontWeight(.bold)
+            }
+            .padding(.all, 14)
+            .background(canBeSaved() ? Color.theme.currencyGreenColor : .gray)
+            .foregroundColor(.white)
+            .cornerRadius(4)
+            .opacity(canBeSaved() ? 1 : 0.3)
+        }
+            )
+        .buttonStyle(.borderless)
     }
 }
 

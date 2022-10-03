@@ -11,11 +11,9 @@ struct AddButton: View {
     @StateObject var viewModel : PortfolioViewModel
     
     var body: some View {
-      
-            NavigationLink{
-              LayzNavigationView(build: PortfolioSelectGridView(viewModel: viewModel))
-            }
-        label:{
+        NavigationLink(destination:
+                        LayzNavigationView(build: PortfolioSelectGridView(viewModel: viewModel))
+        ){
             
             ZStack{
                 Image(systemName: "plus")

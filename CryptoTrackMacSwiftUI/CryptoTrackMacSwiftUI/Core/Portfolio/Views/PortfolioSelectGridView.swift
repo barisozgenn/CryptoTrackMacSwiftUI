@@ -24,15 +24,15 @@ struct PortfolioSelectGridView: View {
                     
                     ForEach(viewModel.cryptoCurrencies){cryptoCurrency in
                         
-                        NavigationLink{
-                            LayzNavigationView(build: PortfolioEditView(viewModel: viewModel, cryptoCurrency: cryptoCurrency))
-                            
-                        }
-                    label:{
+                        NavigationLink(destination:
+                                        LayzNavigationView(build: PortfolioEditView(viewModel: viewModel, cryptoCurrency: cryptoCurrency))
+                                        
+                        ){
                         
                         PortfolioSelectCellView(cryptoCurrency: cryptoCurrency)
                         
                     }
+                    .buttonStyle(.borderless)
                         
                     }
                 }

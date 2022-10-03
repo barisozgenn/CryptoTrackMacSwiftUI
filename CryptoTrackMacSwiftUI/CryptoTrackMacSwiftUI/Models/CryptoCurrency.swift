@@ -29,6 +29,8 @@ struct CryptoCurrency: Codable, Identifiable {
     
     let portfolioAmount : Double?
     let portfolioUnitPrice : Double?
+    let portfolioUnitLowest : Double?
+    let portfolioUnitHighest : Double?
     let portfolioTransactionType : String?
     let portfolioDateCreated : Date?
     
@@ -61,15 +63,21 @@ struct CryptoCurrency: Codable, Identifiable {
         
         case portfolioAmount
         case portfolioUnitPrice
+        case portfolioUnitLowest
+        case portfolioUnitHighest
         case portfolioTransactionType
         case portfolioDateCreated
-        
     }
     
-    func updateHolding(unitPrice : Double, amount: Double, transactionType : String, dateCreated: Date) -> CryptoCurrency {
+    func updateHolding(unitPrice : Double, unitLowest : Double, unitHighest : Double, amount: Double, transactionType : String, dateCreated: Date) -> CryptoCurrency {
         return CryptoCurrency(id: id, symbol: symbol, name: name, image: image, currentPrice: currentPrice, marketCapRank: marketCapRank, marketCap: marketCap, fullyDilutedValuation: fullyDilutedValuation, totalVolume: totalVolume, high24H: high24H, low24H: low24H, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, lastUpdated: lastUpdated, sparklineIn7D: sparklineIn7D, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency,
                               
-                              portfolioAmount : amount, portfolioUnitPrice : unitPrice, portfolioTransactionType: transactionType, portfolioDateCreated: dateCreated)
+                              portfolioAmount : amount,
+                              portfolioUnitPrice : unitPrice,
+                              portfolioUnitLowest : unitLowest,
+                              portfolioUnitHighest : unitHighest,
+                              portfolioTransactionType: transactionType,
+                              portfolioDateCreated: dateCreated)
     }
 }
 

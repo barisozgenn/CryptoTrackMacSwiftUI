@@ -39,6 +39,7 @@ struct PortfolioListView: View {
                         PortfolioCellView(cryptoCurrency: cryptoCurrency)
                         
                     }
+                    .buttonStyle(.borderless)
                         
                     }
                 }

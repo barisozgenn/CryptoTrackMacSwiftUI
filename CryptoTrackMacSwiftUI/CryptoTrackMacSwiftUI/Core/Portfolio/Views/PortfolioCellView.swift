@@ -36,6 +36,7 @@ struct PortfolioCellView: View {
                 }
                 .frame(width: 45, alignment: .leading)
                 
+                
                 // Profit Unit Change
                 VStack{
                     Text(unitPercentageProfit().toPercentString())
@@ -49,12 +50,30 @@ struct PortfolioCellView: View {
                 .background(unitPercentageProfit().toPercentColor())
                 .cornerRadius(4)
                
-                Spacer()
-                    .frame(
-                        minWidth: 0,
-                        maxWidth: .infinity,
-                        minHeight: 0,
-                        maxHeight: 50)
+               spacer
+                
+                // lowest unit price
+                VStack(alignment: .trailing, spacing: 1){
+                    Text((cryptoCurrency.portfolioUnitLowest ?? 0).toUSDCurrencyFormatted())
+                        .font(.system(size: 12))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.theme.primaryTextColor)
+                }
+                .frame(width: 80,alignment: .trailing)
+                
+                spacer
+               
+                
+                // highest unit price
+                VStack(alignment: .trailing, spacing: 1){
+                    Text((cryptoCurrency.portfolioUnitHighest ?? 0).toUSDCurrencyFormatted())
+                        .font(.system(size: 12))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color.theme.primaryTextColor)
+                }
+                .frame(width: 80,alignment: .trailing)
+                
+                spacer
                 
                 // unit price
                 VStack(alignment: .trailing, spacing: 1){
@@ -100,6 +119,15 @@ extension PortfolioCellView {
         return (
             ((cryptoCurrency.currentPrice - (cryptoCurrency.portfolioUnitPrice ?? 0.0))
             / (cryptoCurrency.portfolioUnitPrice ?? 0.0)) * 100)
+    }
+    
+    private var spacer : some View {
+        Spacer()
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 40,
+                maxHeight: .infinity)
     }
 }
 struct PortfolioCellView_Previews: PreviewProvider {

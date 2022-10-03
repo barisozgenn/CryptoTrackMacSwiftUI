@@ -17,12 +17,17 @@ struct PortfolioTableTitleView: View {
             Text("Profit")
                 .frame(width: 60, alignment: .center)
             
-            Spacer()
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: 50)
+            spacer
+            
+            Text("Lowest Unit Price")
+                .frame(width: 150, alignment: .center)
+            
+            spacer
+            
+            Text("Highest Unit Price")
+                .frame(width: 150, alignment: .center)
+            
+            spacer
             
             Text("Unit Price")
                 .frame(width: 80, alignment: .center)
@@ -36,6 +41,16 @@ struct PortfolioTableTitleView: View {
     }
 }
 
+extension PortfolioTableTitleView {
+    private var spacer : some View {
+        Spacer()
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 40,
+                maxHeight: .infinity)
+    }
+}
 struct PortfolioTableTitleView_Previews: PreviewProvider {
     static var previews: some View {
         PortfolioTableTitleView()

@@ -37,6 +37,7 @@ struct MarketView: View {
                         
                     }
                     
+                    
                     if viewModel.isLoading {
                         CustomLoadingIndicator()
                     }

@@ -298,8 +298,8 @@
 			children = (
 				AF89996828E9CF3A00FE3795 /* ChartView.swift */,
 				AF89996628E9CF3A00FE3795 /* CoinDetailSection.swift */,
-				AF89996528E9CF3A00FE3795 /* CoinDetailView.swift */,
 				AF89996728E9CF3A00FE3795 /* StatisticView.swift */,
+				AF89996528E9CF3A00FE3795 /* CoinDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

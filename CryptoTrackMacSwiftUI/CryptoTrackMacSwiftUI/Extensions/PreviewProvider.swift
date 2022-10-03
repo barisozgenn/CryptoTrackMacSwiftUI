@@ -227,6 +227,8 @@ class DeveloperPreview{
         
         portfolioAmount : 1.29,
         portfolioUnitPrice : 17.789,
+        portfolioUnitLowest : 16.789,
+        portfolioUnitHighest : 18.789,
         portfolioTransactionType : "b",
         portfolioDateCreated : Date()
     )

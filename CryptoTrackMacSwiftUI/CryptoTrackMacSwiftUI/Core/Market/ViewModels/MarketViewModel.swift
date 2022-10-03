@@ -16,11 +16,16 @@ class MarketViewModel:  ObservableObject {
     @Published private(set) var btnNameImageDirection = ""
     @Published private(set) var btnPriceImageDirection = ""
     @Published private(set) var btnPercentageImageDirection = ""
+    @Published private(set) var btnVolumeImageDirection = ""
+    @Published private(set) var btnMarketCapImageDirection = ""
+
+    private(set) var isClickedBtnRank = false
+    private(set) var isClickedBtnName = false
+    private(set) var isClickedBtnPrice = false
+    private(set) var isClickedBtnPercentage = false
+    private(set) var isClickedBtnVolume = false
+    private(set) var isClickedBtnMarketCap = false
     
-    @Published private(set) var isClickedBtnRank = false
-    @Published private(set) var isClickedBtnName = false
-    @Published private(set) var isClickedBtnPrice = false
-    @Published private(set) var isClickedBtnPercentage = false
     @Published var isLoading = true
 
     @Published var searchText : String = ""
@@ -128,6 +133,24 @@ class MarketViewModel:  ObservableObject {
                 cryptoCurrencies = cryptoCurrencies.sorted(by: { $0.marketCapRank < $1.marketCapRank })
                 lastSortType = .rankLow
             }
+        case .volume:
+            if lastSortType == .volumeLow {
+                cryptoCurrencies = cryptoCurrencies.sorted(by: { $0.totalVolume ?? 0 > $1.totalVolume ?? 0 })
+                lastSortType = .volumeHigh
+            }
+            else {
+                cryptoCurrencies = cryptoCurrencies.sorted(by: { $0.totalVolume ?? 0 < $1.totalVolume ?? 0 })
+                lastSortType = .volumeLow
+            }
+        case .marketCap:
+            if lastSortType == .marketCapLow {
+                cryptoCurrencies = cryptoCurrencies.sorted(by: { $0.marketCap ?? 0 > $1.marketCap ?? 0 })
+                lastSortType = .marketCapHigh
+            }
+            else {
+                cryptoCurrencies = cryptoCurrencies.sorted(by: { $0.marketCap ?? 0 < $1.marketCap ?? 0 })
+                lastSortType = .marketCapLow
+            }
         }
         
         setSortButtonStyle()
@@ -143,12 +166,16 @@ class MarketViewModel:  ObservableObject {
         btnNameImageDirection = downArrowEmpty
         btnPriceImageDirection = downArrowEmpty
         btnPercentageImageDirection = downArrowEmpty
-        
+        btnVolumeImageDirection = downArrowEmpty
+        btnMarketCapImageDirection = downArrowEmpty
+
         isClickedBtnRank = false
         isClickedBtnName = false
         isClickedBtnPrice = false
         isClickedBtnPercentage = false
-        
+        isClickedBtnVolume = false
+        isClickedBtnMarketCap = false
+
         switch lastSortType {
         case .rankLow:
             btnRankImageDirection = downArrow
@@ -182,6 +209,20 @@ class MarketViewModel:  ObservableObject {
             btnPercentageImageDirection = downArrow
             isClickedBtnPercentage = true
 
+        case .volumeLow:
+            btnVolumeImageDirection = upArrow
+            isClickedBtnVolume = true
+            
+        case .volumeHigh:
+            btnVolumeImageDirection = downArrow
+            isClickedBtnVolume = true
+            
+        case .marketCapLow:
+            btnMarketCapImageDirection = upArrow
+            isClickedBtnMarketCap = true
+        case .marketCapHigh:
+            btnMarketCapImageDirection = downArrow
+            isClickedBtnMarketCap = true
         }
         
     }
@@ -191,6 +232,8 @@ class MarketViewModel:  ObservableObject {
         case name
         case price
         case percentage
+        case volume
+        case marketCap
     }
     
     private enum ListSortType {
@@ -202,6 +245,10 @@ class MarketViewModel:  ObservableObject {
         case priceHigh
         case percentageLow
         case percentageHigh
+        case volumeLow
+        case volumeHigh
+        case marketCapLow
+        case marketCapHigh
     }
 }
 

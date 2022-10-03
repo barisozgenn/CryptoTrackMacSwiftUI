@@ -32,12 +32,32 @@ struct CurrenciesTableTitleView: View {
             .withSortButtonViewModifier(frameWidth: 90, isClicked: viewModel.isClickedBtnName)
             .padding(.leading,12)
             
-            Spacer()
-                .frame(
-                    minWidth: 0,
-                    maxWidth: .infinity,
-                    minHeight: 0,
-                    maxHeight: 50)
+            spacer
+            
+            HStack{
+                Text("24h Volume")
+                Image(systemName: viewModel.btnVolumeImageDirection)
+            }
+            .onTapGesture {
+                viewModel.sortList(type: .volume)
+            }
+            .withSortButtonViewModifier(frameWidth: 95, isClicked: viewModel.isClickedBtnVolume)
+            .padding(.leading,55)
+            
+            spacer
+            
+            HStack{
+                Text("Market Cap")
+                Image(systemName: viewModel.btnMarketCapImageDirection)
+            }
+            .onTapGesture {
+                viewModel.sortList(type: .marketCap)
+            }
+            .withSortButtonViewModifier(frameWidth: 95, isClicked: viewModel.isClickedBtnMarketCap)
+            
+            
+            spacer
+            
             HStack{
                 Text("Price")
                 Image(systemName: viewModel.btnPriceImageDirection)
@@ -63,6 +83,16 @@ struct CurrenciesTableTitleView: View {
     }
 }
 
+extension CurrenciesTableTitleView {
+    private var spacer : some View {
+        Spacer()
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 40,
+                maxHeight: .infinity)
+    }
+}
 struct TableTitleView_Previews: PreviewProvider {
     static var previews: some View {
         CurrenciesTableTitleView(viewModel: MarketViewModel())

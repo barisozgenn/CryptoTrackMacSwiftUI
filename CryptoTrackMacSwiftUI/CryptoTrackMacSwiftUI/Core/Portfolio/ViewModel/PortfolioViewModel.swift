@@ -50,7 +50,6 @@ class PortfolioViewModel:  ObservableObject {
                         guard let entity = portfolioEntities.first(where: {$0.coinID == currency.id}) else { return nil }
                         
                         return self.calculateHoldingTotal(pEntity: entity, pEntities: portfolioEntities, currency: currency)
-                        //return currency.updateHolding(unitPrice: entity.unitPrice, amount: entity.amount, transactionType: entity.transactionType ?? "b", dateCreated: entity.dateCreated ?? Date())
                         
                     }
             }
@@ -94,7 +93,10 @@ class PortfolioViewModel:  ObservableObject {
         let totalPrice : Double = selectedCurrencyList.map { $0.amount * $0.unitPrice }.reduce(0.0, +)
         let unitPrice : Double = totalPrice / totalAmount
         
-        return currency.updateHolding(unitPrice: unitPrice, amount: totalAmount, transactionType: pEntity.transactionType ?? "b", dateCreated: pEntity.dateCreated ?? Date())
+        let unitLowestPrice : Double = selectedCurrencyList.map {$0.unitPrice}.min() ?? 0.0
+        let unitHighestPrice : Double = selectedCurrencyList.map {$0.unitPrice}.max() ?? 0.0
+
+        return currency.updateHolding(unitPrice: unitPrice,unitLowest: unitLowestPrice, unitHighest: unitHighestPrice, amount: totalAmount, transactionType: pEntity.transactionType ?? "b", dateCreated: pEntity.dateCreated ?? Date())
 
     }
     

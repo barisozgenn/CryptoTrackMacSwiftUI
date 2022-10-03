@@ -11,14 +11,17 @@ struct PortfolioView: View {
     @EnvironmentObject var viewModel: PortfolioViewModel
 
     var body: some View {
-        VStack{
-            // head view
-            PortfolioChart(viewModel: viewModel)
-            
-            // list view
-            PortfolioListView(viewModel: viewModel)
+        NavigationStack{
+            VStack{
+                // head view
+                PortfolioChart(viewModel: viewModel)
+                
+                // list view
+                PortfolioListView(viewModel: viewModel)
+            }
+            .background(Color.theme.appBackgroundColor)
         }
-        .background(Color.theme.appBackgroundColor)
+       
     }
 }
 

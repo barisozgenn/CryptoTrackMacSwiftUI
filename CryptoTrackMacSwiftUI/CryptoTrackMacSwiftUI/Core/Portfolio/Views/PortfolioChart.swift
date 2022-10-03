@@ -18,10 +18,9 @@ struct PortfolioChart: View {
             VStack{
                 PieChartView(slices:[
                     PieChartModel(price: 4, color: .orange, title: "BTC"),
-                    PieChartModel(price: 2, color: .green, title: "ETH"),
+                    PieChartModel(price: 1, color: .green, title: "ETH"),
                     PieChartModel(price: 5, color: .teal, title: "CAKE"),
-                    PieChartModel(price: 4, color: .yellow, title: "MITH"),
-                    PieChartModel(price: 1, color: .gray, title: "LIT")
+                    PieChartModel(price: 3, color: .yellow, title: "SRM")
                 ])
             }
             .frame(height: 100)

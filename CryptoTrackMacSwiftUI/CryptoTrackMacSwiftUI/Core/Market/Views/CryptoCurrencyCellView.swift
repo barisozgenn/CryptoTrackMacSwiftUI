@@ -54,12 +54,37 @@ struct CryptoCurrencyCellView:View {
                 }
                 .frame(width: 120, alignment: .leading)
                 
-                Spacer()
-                    .frame(
-                        minWidth: 0,
-                        maxWidth: .infinity,
-                        minHeight: 40,
-                        maxHeight: .infinity)
+               spacer
+                
+                // 24h volume
+                VStack(alignment: .trailing, spacing: 1){
+                    Text((cryptoCurrency.totalVolume ?? 0).formattedWithAbbreviations())
+                        .font(.system(size: 12))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(.lightGray))
+                    
+                }
+                .frame(width: 100,alignment: .trailing)
+                .padding(.horizontal,0)
+                
+                spacer
+                
+                // MarketCap volume
+                VStack(alignment: .trailing, spacing: 1){
+                    Text((cryptoCurrency.marketCap ?? 0).formattedWithAbbreviations())
+                        .font(.system(size: 12))
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(.lightGray))
+                    
+                    Text((cryptoCurrency.marketCapChangePercentage24H ?? 0).toPercentString())
+                        .font(.system(size: 10))
+                        .fontWeight(.semibold)
+                        .foregroundColor((cryptoCurrency.marketCapChangePercentage24H ?? 0).toPercentColor())
+                }
+                .frame(width: 100,alignment: .trailing)
+                .padding(.horizontal,0)
+                
+                spacer
                 
                 // last price
                 VStack(alignment: .trailing, spacing: 1){
@@ -75,7 +100,8 @@ struct CryptoCurrencyCellView:View {
                         .foregroundColor(.gray)
                 }
                 .frame(width: 100,alignment: .trailing)
-                .padding(.horizontal,0)
+                .padding(.trailing, 14)
+                
                 
                 // 24h Change
                 VStack{
@@ -104,6 +130,16 @@ struct CryptoCurrencyCellView:View {
     }
 }
 
+extension CryptoCurrencyCellView {
+    private var spacer : some View {
+        Spacer()
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 40,
+                maxHeight: .infinity)
+    }
+}
 struct CryptoCurrencyCellView_Previews: PreviewProvider {
     static var previews: some View {
         CryptoCurrencyCellView(cryptoCurrency: dev.cryptoCurrency)
