@@ -1,2 +1,2 @@
 # CryptoTrackMacSwiftUI
-Crypto &amp; Portfolio Track Mac app SwiftUI iOS 16 MVVM
+Crypto &amp; Portfolio Track SwiftUI macOS 13 Ventura Beta MVVM
